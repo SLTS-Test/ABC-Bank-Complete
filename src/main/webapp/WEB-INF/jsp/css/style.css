@@ -1,0 +1,8 @@
+* {
+    box-sizing: border-box;
+    background-color: blue;
+}
+
+html {
+    font-family: Ubuntu, sans-serif;
+}

@@ -1,0 +1,22 @@
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    color: black !important;
+    width: 200px;
+    background-color: lightgray;
+    border: 1px solid lightgray !important;
+    text-decoration: none !important;
+    outline: none !important;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.menu-item:hover{
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.15) !important;
+}
+
+.menu-item:hover i {
+    color: #0092e8 !important;
+}
