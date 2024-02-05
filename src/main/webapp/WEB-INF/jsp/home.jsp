@@ -1,4 +1,5 @@
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -39,10 +40,14 @@
 <body>
 <%@ include file="common/header.jsp"%>
 <main class="p-3 gap-3 d-flex justify-content-center flex-wrap">
-    <a href="customers" class="menu-item text-center shadow-sm">
-        <i class="bi bi-person-arms-up fs-1"></i>
-        <span class="fs-4 fw-medium">Add User</span>
-    </a>
+
+    <c:if test="${role == 'ADMIN'}">
+        <a href="admin/users" class="menu-item text-center shadow-sm">
+            <i class="bi bi-people fs-1"></i>
+            <span class="fs-4 fw-medium">Manage Users</span>
+        </a>
+    </c:if>
+
     <a href="customers" class="menu-item text-center shadow-sm">
         <i class="bi bi-person-arms-up fs-1"></i>
         <span class="fs-4 fw-medium">List Customers</span>

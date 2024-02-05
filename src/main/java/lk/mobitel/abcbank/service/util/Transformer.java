@@ -25,6 +25,10 @@ public class Transformer {
     }
 
     public User fromUserDTO(UserDTO userDTO){
+        mapper.getConfiguration().setAmbiguityIgnored(true);
+        mapper.typeMap(RoleDTO.class,Role.class)
+                .addMapping(RoleDTO::getId,Role::setId)
+                .addMapping(RoleDTO::getName, Role::setName);
         return mapper.map(userDTO, User.class);
     }
     public UserDTO toUserDTO(User user){

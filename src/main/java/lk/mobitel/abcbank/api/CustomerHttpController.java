@@ -4,12 +4,15 @@ import lk.mobitel.abcbank.dto.CustomerDTO;
 import lk.mobitel.abcbank.service.custom.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -17,6 +20,22 @@ import java.util.List;
 public class CustomerHttpController {
     @Autowired
     private CustomerService customerService;
+
+
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    public String getHome(Authentication authentication, ModelMap model) {
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
+        String role = authorities.toArray()[0] + "";
+        model.put("role",role);
+        return "home";
+    }
+
+    @RequestMapping(value = "/",method = RequestMethod.GET)
+    public String getRoot(){
+        return "redirect:/home";
+    }
+
 
 
     @RequestMapping(value = "/customers",method = RequestMethod.GET)

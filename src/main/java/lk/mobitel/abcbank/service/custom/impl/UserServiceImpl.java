@@ -2,6 +2,7 @@ package lk.mobitel.abcbank.service.custom.impl;
 
 import lk.mobitel.abcbank.dto.UserDTO;
 import lk.mobitel.abcbank.entity.Customer;
+import lk.mobitel.abcbank.entity.Role;
 import lk.mobitel.abcbank.entity.User;
 import lk.mobitel.abcbank.exception.AddException;
 import lk.mobitel.abcbank.repository.UserRepository;
@@ -52,7 +53,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO getUserDetails(int id) {
         Optional<User> optCustomer = userRepository.findById(id);
         if(optCustomer.isEmpty()) throw new AddException(404, "No Customer Found");
-        optCustomer.get().setPassword(null);
+//        optCustomer.get().setPassword(null);
         return transformer.toUserDTO(optCustomer.get());
     }
 
@@ -60,9 +61,7 @@ public class UserServiceImpl implements UserService {
     public List<UserDTO> getAllUsers() {
         List<User> userList;
         userList = userRepository.findAll();
-        for (User user : userList) {
-            user.setPassword(null);
-        }
-        return userList.stream().map(transformer::toUserDTO).collect(Collectors.toList());
+        List<UserDTO> collect = userList.stream().map(transformer::toUserDTO).collect(Collectors.toList());
+        return collect;
     }
 }

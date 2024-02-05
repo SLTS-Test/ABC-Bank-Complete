@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -40,6 +41,15 @@
             </tr>
         </c:forEach>
         </tbody>
+        <c:if test="${empty customerList}">
+            <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    There are no customer records to display
+                </td>
+            </tr>
+            </tfoot>
+        </c:if>
     </table>
 </main>
 <%@include file="common/footer.jsp"%>

@@ -5,6 +5,14 @@
             <a href="/" class="text-decoration-none text-dark">ABC Bank</a>
         </h1>
     </div>
+    <div>
+        <h2>
+            <sec:authorize access="isAuthenticated()">
+            Welcome Back, <sec:authentication property="name"/>
+            </sec:authorize>
+            <sec:authentication property="principal.authorities"/>
+        </h2>
+    </div>
     <div id="mode-container" class="d-flex gap-2">
         <a class="btn btn-primary" href="/logout">Log Out</a>
     </div>
